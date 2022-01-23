@@ -3,5 +3,11 @@
     "@types/jest": "^27.4.0",
     "jest": "^27.4.7",
     "typescript": "^4.5.5"
+  },
+  "scripts": {
+      "test": "jest"
+  },
+  "jest": {
+    "verbose": true
   }
 }
