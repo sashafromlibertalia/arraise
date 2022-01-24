@@ -1,13 +1,43 @@
 {
-  "dependencies": {
-    "@types/jest": "^27.4.0",
-    "jest": "^27.4.7",
-    "typescript": "^4.5.5"
-  },
-  "scripts": {
-      "test": "jest"
-  },
-  "jest": {
-    "verbose": true
-  }
+    "name": "arraise",
+    "description": "TypeScript and JavaScript library which extends default array's and object's methods",
+    "version": "1.0.0",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "devDependencies": {
+        "@types/jest": "^27.4.0",
+        "ts-jest": "^27.1.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sashafromlibertalia/arraise.js.git"
+    },
+    "author": "Alexander Miroshnichenko",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sashafromlibertalia/arraise.js/issues"
+    },
+    "homepage": "https://github.com/sashafromlibertalia/arraise.js#readme",
+    "dependencies": {
+        "jest": "^27.4.7",
+        "typescript": "^4.5.5"
+    },
+    "scripts": {
+        "test": "jest",
+        "build": "tsc"
+    },
+    "jest": {
+        "verbose": true,
+        "roots": [
+            "tests",
+            "src"
+        ],
+        "clearMocks": true,
+        "transform": {
+            "^.+\\.(ts|tsx)$": "ts-jest"
+        },
+        "collectCoverage": true
+    }
 }
