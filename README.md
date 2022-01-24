@@ -22,8 +22,76 @@ npm i arraise.js
 // ES6 / TypeScript
 import Arraise from "arraise"
 const arraise = new Arraise()
-
-arraise.makeUnique(array)
 ```
 
-## Documentation
+## API
+Arraise is compatible with `arrays` and `objects`. Here is a list of available methods:
+
+#### Arrays
+- [makeUnique()](README.md###makeUnique)
+- [sortAscending()](README.md###sortAscending)
+- [sortDescending()](README.md###sortDescending)
+- [areSame()](README.md###areSame)
+- [findCommon()](README.md###findCommon)
+
+#### Objects
+> In progress
+
+### makeUnique()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+
+Returns array with unique elements:
+```js
+const array = [1, 1, 2, 3]
+arraise.makeUnique(array) // [1, 2, 3]
+```
+
+### sortAscending()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+
+Sorts array in ascending order:
+```js
+const array = [1, 5, 3]
+arraise.sortAscending(array) // [5, 3, 1]
+```
+
+### sortDescending()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+
+Sorts array in descending order:
+```js
+const array = [1, 5, 3]
+arraise.sortDescending(array) // [1, 3, 5]
+```
+
+### areSame()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+| `Array<T>`    | true | 
+
+Compares two arrays and returns true if they are the same.
+```js
+const arr1 = [1, 5, 3]
+const arr2 = [1, 5, 3]
+arraise.areSame(arr1, arr2) // True
+```
+
+### findCommon()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+| `Array<T>`    | true | 
+
+Finds common elements in provided arrays and returns new array with these elements.
+```js
+const arr1 = [1, 2, 3, 6]
+const arr2 = [1, 2, 3, 4, 5, 6]
+arraise.findCommon(arr1, arr2) // [1, 2, 3, 6]
+```
