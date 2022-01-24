@@ -27,12 +27,13 @@ const arraise = new Arraise()
 ## API
 Arraise is compatible with `arrays` and `objects`. Here is a list of available methods:
 
-#### Arrays
-- [makeUnique()](README.md###makeUnique)
-- [sortAscending()](README.md###sortAscending)
-- [sortDescending()](README.md###sortDescending)
-- [areSame()](README.md###areSame)
-- [findCommon()](README.md###findCommon)
+- Arrays
+  - [makeUnique()](#makeunique)
+  - [sortAscending()](#sortascending)
+  - [sortDescending()](#sortdescending)
+  - [areSame()](#aresame)
+  - [findCommon()](#findcommon)
+- Objects
 
 #### Objects
 > In progress
