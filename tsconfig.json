@@ -8,8 +8,7 @@
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "moduleResolution": "node",
-        "sourceMap": true,
-        "rootDir": "src"
+        "sourceMap": true
     },
     "exclude": [
         "node_modules",
