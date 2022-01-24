@@ -1,2 +1,2 @@
-service_name: travis-pro
-repo_token: UpPBhKbmbwyREXiKTE7YGcGjJfSm1BuMy
+- name: Coveralls GitHub Action
+  uses: coverallsapp/github-action@1.1.3
