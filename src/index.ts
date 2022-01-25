@@ -1,43 +1,52 @@
-interface IArraise<T> {
+interface ArraiseMethods<T> {
+    //////////////////////////////// Common //////////////////////////////////
+    /**
+    * Compares 2 arrays or objects
+    * @param array1 - first array to compare
+    * @param array2 - second array to compare
+    * 
+    * @param obj1 - first object to compare
+    * @param obj2 - second object to compare
+    * @example arraise.areSame([1, 2], [1,2]) // true
+    */
+    areSame(...args: [array1: T[], array2: T[]] | [obj1: Object, obj2: Object]): Boolean
+
+
+    //////////////////////////////// Arrays //////////////////////////////////
     /**
      * Returns modified array with unique elements
      * @param array - array to be modified
      * @example [1, 1, 2, 3] => [1, 2, 3]
      */
-    makeUnique(array: Array<T>): Array<T>;
+    makeUnique(array: T[]): T[];
 
     /**
      * Sorts array in ascending order: 
      * @param array - array to be sorted
      * @example [1, 5, 3] => [1, 3, 5]
      */
-    sortAscending(array: Array<T>): Array<T>;
+    sortAscending(array: T[]): T[];
 
     /**
      * Sorts array in descending order: 
      * @param array - array to be sorted
      * @example [1, 5, 3] => [5, 3, 1]
      */
-    sortDescending(array: Array<T>): Array<T>;
+    sortDescending(array: T[]): T[];
 
     /**
-     * Compares two arrays
-     * @param array1 - first array to compare
-     * @param array2 - second array to compare
+     * Finds common elements in provided arrays
+     * @param args - arrays to find in
      */
-    areSame(array1: Array<T>, array2: Array<T>): Boolean;
+    findCommon(...args: any[]): any[]
 
 
-    /**
-     * Returns array with common elements of both arrays
-     * @param array1 - first array 
-     * @param array2 - second array
-     */
-    findCommon(array1: Array<T>, array2: Array<T>): Array<T>;
+    //////////////////////////////// Objects //////////////////////////////////
+    findValuesByKey(obj: Object, key: string): any[]
 }
 
-export default class Arraise implements IArraise<any> {
-    constructor() {}
+export default class Arraise implements ArraiseMethods<any> {
+    constructor() { }
 
     makeUnique(array: any[]): any[] {
         return [...new Set<any>(array)]
@@ -51,24 +60,57 @@ export default class Arraise implements IArraise<any> {
         return array.sort().reverse()
     }
 
-    areSame(array1: any[], array2: any[]): Boolean {
-        if (array1.length !== array2.length) return false 
+    areSame(...args: [array1: any[], array2: any[]] |
+    [obj1: Object, obj2: Object]): Boolean {
+        const obj1 = args[0]
+        const obj2 = args[1]
 
-        const length = array1.length
-        for (let i = 0; i < length; i++) {
-            if (array1[i] !== array2[i]) return false
+        if (Array.isArray(obj1) && Array.isArray(obj2)) {
+            if (obj1.length !== obj2.length)
+                return false
+
+            return JSON.stringify(obj1) === JSON.stringify(obj2)
         }
+        else {
+            const allKeys = (obj, prefix = '') =>
+                Object.keys(obj).reduce((res, el) => {
+                    if (typeof obj[el] === 'object' && obj[el] !== null) {
+                        return [...res, ...allKeys(obj[el], prefix + el + '.')];
+                    }
+                    return [...res, prefix + el];
+                }, []);
 
-        return true
+            const allValues = (obj, prefix = '') => 
+                Object.values(obj).reduce((res: any[], el) => {
+                    if (typeof el === 'object' && el !== null) {
+                        const key = Object.keys(obj).find(key => obj[key] === el)
+                        return [...res, ...allValues(obj[key], prefix + el + '.')];
+                    }
+                    return [...res, prefix + el];
+                }, []);
+            
+
+            const obj1Keys = allKeys(obj1)
+            const obj2Keys = allKeys(obj2)
+
+            const obj1Values = allValues(obj1)
+            const obj2Values = allValues(obj2)
+
+            console.log(obj1Values);
+
+
+            return JSON.stringify(obj1Keys) === JSON.stringify(obj2Keys) &&
+               JSON.stringify(obj1Values) === JSON.stringify(obj2Values)
+        }
     }
 
-    findCommon(array1: any[], array2: any[]): any[] {
-        let data = []
-        for (let i = 0; i < array1.length; i++) {
-            if (array2.includes(array1[i])) 
-                data.push(array1[i])
-        }
+    findCommon(...args: any[]): any[] {
+        return args.reduce((first, second) => {
+            return first.filter(el => second.includes(el));
+        })
+    }
 
-        return data
+    findValuesByKey(obj: Object, key: string): any[] {
+        throw new Error("Method not implemented.")
     }
 }

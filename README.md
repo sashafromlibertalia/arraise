@@ -28,15 +28,42 @@ const arraise = new Arraise()
 Arraise is compatible with `arrays` and `objects`. Here is a list of available methods:
 
 - Arrays
+  - [areSame()](#aresame)
+  - [findCommon()](#findcommon)
   - [makeUnique()](#makeunique)
   - [sortAscending()](#sortascending)
   - [sortDescending()](#sortdescending)
-  - [areSame()](#aresame)
-  - [findCommon()](#findcommon)
 - Objects
+  - [аreSame()](#aresameobj)
 
-#### Objects
-> In progress
+## Arrays
+
+### areSame()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+| `Array<T>`    | true | 
+
+Compares two arrays and returns true if they are the same.
+```js
+const arr1 = [1, 5, 3]
+const arr2 = [1, 5, 3]
+arraise.areSame(arr1, arr2) // True
+```
+
+### findCommon()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+
+Finds common elements in provided arrays and returns new array with these elements.
+<br>
+**Note**: You can pass *N* arrays at the same time ✨
+```js
+const arr1 = [1, 2, 3, 6]
+const arr2 = [1, 2, 3, 4, 5, 6]
+arraise.findCommon(arr1, arr2) // [1, 2, 3, 6]
+```
 
 ### makeUnique()
 | Arguments      | Required         |
@@ -71,28 +98,21 @@ const array = [1, 5, 3]
 arraise.sortDescending(array) // [1, 3, 5]
 ```
 
-### areSame()
+## Objects
+
+### areSame() <a name="aresameobj"></a>
 | Arguments      | Required         |
 | :-------------: |:-------------:| 
-| `Array<T>`    | true | 
-| `Array<T>`    | true | 
+| `Object`    | true | 
+| `Object`    | true | 
 
-Compares two arrays and returns true if they are the same.
+Compares two objects and returns true if they are the same. **Supports nesting**
 ```js
-const arr1 = [1, 5, 3]
-const arr2 = [1, 5, 3]
-arraise.areSame(arr1, arr2) // True
-```
-
-### findCommon()
-| Arguments      | Required         |
-| :-------------: |:-------------:| 
-| `Array<T>`    | true | 
-| `Array<T>`    | true | 
-
-Finds common elements in provided arrays and returns new array with these elements.
-```js
-const arr1 = [1, 2, 3, 6]
-const arr2 = [1, 2, 3, 4, 5, 6]
-arraise.findCommon(arr1, arr2) // [1, 2, 3, 6]
+const obj1 = {
+    KEY: "VALUE"
+}
+const obj2 = {
+    KEY: "VALUE"
+}
+arraise.areSame(obj1, obj2) // True
 ```

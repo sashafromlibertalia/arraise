@@ -2,6 +2,13 @@ import Arraise from "../../src/index"
 const arraise = new Arraise()
 
 describe('compare two arrays', () => {
+    test('compare two empty arrays', () => {
+        const a = []
+        const b = []
+
+        expect(arraise.areSame(a, b)).toBeTruthy()
+    })
+
     test('compare two different arrays by value', () => {
         const a = [1, 2, 3]
         const b = [4, 5, 6]
