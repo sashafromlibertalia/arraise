@@ -96,9 +96,6 @@ export default class Arraise implements ArraiseMethods<any> {
             const obj1Values = allValues(obj1)
             const obj2Values = allValues(obj2)
 
-            console.log(obj1Values);
-
-
             return JSON.stringify(obj1Keys) === JSON.stringify(obj2Keys) &&
                JSON.stringify(obj1Values) === JSON.stringify(obj2Values)
         }
