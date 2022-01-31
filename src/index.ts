@@ -38,10 +38,18 @@ interface ArraiseMethods<T> {
      * Finds common elements in provided arrays
      * @param args - arrays to find in
      */
-    findCommon(...args: any[]): any[]
+    findCommon(...args: T[]): T[]
+    /**
+     * Swaps elements in given array. Provide indexes to swap.
+     * @param arr - array
+     * @param first - first index to swap
+     * @param last - last index to swap
+     */
+    swap(arr: T[], first: number, last: number): T[]
 
 
     //////////////////////////////// Objects //////////////////////////////////
+    // TODO
     findValuesByKey(obj: Object, key: string): any[]
 }
 
@@ -109,5 +117,17 @@ export default class Arraise implements ArraiseMethods<any> {
 
     findValuesByKey(obj: Object, key: string): any[] {
         throw new Error("Method not implemented.")
+    }
+
+    swap(arr: any[], first: number, last: number): any[] {
+        if (!arr.length) throw new Error("Array is empty")
+        if (first < 0 || last < 0) throw new Error("Indexes can't be negative numbers")
+        if (first > arr.length - 1 || last > arr.length - 1) throw new Error("Index out of range")
+
+        const temp = arr[last]
+        arr[last] = arr[first]
+        arr[first] = temp
+
+        return arr
     }
 }

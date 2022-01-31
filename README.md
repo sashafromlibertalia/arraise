@@ -33,6 +33,7 @@ Arraise is compatible with `arrays` and `objects`. Here is a list of available m
   - [makeUnique()](#makeunique)
   - [sortAscending()](#sortascending)
   - [sortDescending()](#sortdescending)
+  - [swap()](#swap)
 - Objects
   - [аreSame()](#aresameobj)
 
@@ -96,6 +97,19 @@ Sorts array in descending order:
 ```js
 const array = [1, 5, 3]
 arraise.sortDescending(array) // [1, 3, 5]
+```
+
+### swap()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+| `first<number>`    | true | 
+| `last<number>`    | true | 
+
+Swaps elements in given array. Provide indexes to swap.
+```js
+const array = [1, 5, 3]
+arraise.swap(array, 0, 1) // [5, 1, 5]
 ```
 
 ## Objects
