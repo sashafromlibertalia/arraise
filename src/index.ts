@@ -37,13 +37,23 @@ interface ArraiseMethods<T> {
     /**
      * Finds common elements in provided arrays
      * @param args - arrays to find in
+     * @example [1, 2, 3] && [1, 2] => [1, 2]
      */
     findCommon(...args: T[]): T[]
+
+    /**
+     * Finds different elements in provided arrays
+     * @param args - arrays to find in
+     * @example [1, 2, 3] && [1, 2] => [1, 2]
+     */
+    findDifference(...args: T[]): T[]
+
     /**
      * Swaps elements in given array. Provide indexes to swap.
      * @param arr - array
      * @param first - first index to swap
      * @param last - last index to swap
+     * @example [1, 2, 3] (0, 1) => [2, 1, 3]
      */
     swap(arr: T[], first: number, last: number): T[]
 
@@ -88,7 +98,7 @@ export default class Arraise implements ArraiseMethods<any> {
                     return [...res, prefix + el];
                 }, []);
 
-            const allValues = (obj, prefix = '') => 
+            const allValues = (obj, prefix = '') =>
                 Object.values(obj).reduce((res: any[], el) => {
                     if (typeof el === 'object' && el !== null) {
                         const key = Object.keys(obj).find(key => obj[key] === el)
@@ -96,7 +106,7 @@ export default class Arraise implements ArraiseMethods<any> {
                     }
                     return [...res, prefix + el];
                 }, []);
-            
+
 
             const obj1Keys = allKeys(obj1)
             const obj2Keys = allKeys(obj2)
@@ -105,13 +115,19 @@ export default class Arraise implements ArraiseMethods<any> {
             const obj2Values = allValues(obj2)
 
             return JSON.stringify(obj1Keys) === JSON.stringify(obj2Keys) &&
-               JSON.stringify(obj1Values) === JSON.stringify(obj2Values)
+                JSON.stringify(obj1Values) === JSON.stringify(obj2Values)
         }
     }
 
     findCommon(...args: any[]): any[] {
         return args.reduce((first, second) => {
             return first.filter(el => second.includes(el));
+        })
+    }
+
+    findDifference(...args: any[]): any[] {
+        return args.reduce((first, second) => {
+            return first.filter(el => !second.includes(el));
         })
     }
 

@@ -30,6 +30,7 @@ Arraise is compatible with `arrays` and `objects`. Here is a list of available m
 - Arrays
   - [areSame()](#aresame)
   - [findCommon()](#findcommon)
+  - [findDifference()](#finddifference)
   - [makeUnique()](#makeunique)
   - [sortAscending()](#sortascending)
   - [sortDescending()](#sortdescending)
@@ -64,6 +65,20 @@ Finds common elements in provided arrays and returns new array with these elemen
 const arr1 = [1, 2, 3, 6]
 const arr2 = [1, 2, 3, 4, 5, 6]
 arraise.findCommon(arr1, arr2) // [1, 2, 3, 6]
+```
+
+### findDifference()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+
+Finds different elements in provided arrays and returns new array with these elements.
+<br>
+**Note**: You can pass *N* arrays at the same time ✨
+```js
+const arr1 = [1, 2, 3, 6]
+const arr2 = [1, 2, 3, 4, 5, 6]
+arraise.findDifference(arr1, arr2) // [4, 5]
 ```
 
 ### makeUnique()
