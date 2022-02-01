@@ -7,6 +7,8 @@
 <img src="https://coveralls.io/repos/github/sashafromlibertalia/arraise.js/badge.svg">
 <img src="https://img.shields.io/bundlephobia/min/arraise.js">
 <img src="https://img.shields.io/github/license/sashafromlibertalia/arraise.js">
+  
+<a href="https://www.buymeacoffee.com/fromlibertalia"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black"></a>
 </p>
 </div>
 
