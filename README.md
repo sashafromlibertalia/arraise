@@ -32,6 +32,8 @@ Arraise is compatible with `arrays` and `objects`. Here is a list of available m
   - [findCommon()](#findcommon)
   - [findDifference()](#finddifference)
   - [makeUnique()](#makeunique)
+  - [max()](#max)
+  - [min()](#min)
   - [sortAscending()](#sortascending)
   - [sortDescending()](#sortdescending)
   - [swap()](#swap)
@@ -86,10 +88,32 @@ arraise.findDifference(arr1, arr2) // [4, 5]
 | :-------------: |:-------------:| 
 | `Array<T>`    | true | 
 
-Returns array with unique elements:
+Returns array with unique elements
 ```js
 const array = [1, 1, 2, 3]
 arraise.makeUnique(array) // [1, 2, 3]
+```
+
+### max()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+
+Finds maximum value in given array
+```js
+const array = [1, 2, 3]
+arraise.makeUnique(array) // 3
+```
+
+### min()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+
+Finds minimum value in given array
+```js
+const array = [1, 2, 3]
+arraise.makeUnique(array) // 1
 ```
 
 ### sortAscending()

@@ -21,6 +21,20 @@ interface ArraiseMethods<T> {
     makeUnique(array: T[]): T[];
 
     /**
+     * Finds minimum value in given array
+     * @param array - array to find minimum value
+     * @example [1, 2, 3] => 1
+     */
+    min(array: number[]): number;
+
+    /**
+     * Finds maximum value in given array
+     * @param array - array to find maximum value
+     * @example [1, 2, 3] => 3
+     */
+    max(array: number[]): number;
+
+    /**
      * Sorts array in ascending order: 
      * @param array - array to be sorted
      * @example [1, 5, 3] => [1, 3, 5]
@@ -64,10 +78,18 @@ interface ArraiseMethods<T> {
 }
 
 export default class Arraise implements ArraiseMethods<any> {
-    constructor() { }
+    constructor() {}
 
     makeUnique(array: any[]): any[] {
         return [...new Set<any>(array)]
+    }
+
+    min(array: number[]): number {
+        return array.sort().shift()
+    }
+
+    max(array: number[]): number {
+        return array.sort().slice(-1).pop()
     }
 
     sortAscending(array: any[]): any[] {
