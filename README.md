@@ -106,7 +106,7 @@ Merge provided arrays. Supports merging **without** duplicated elements.
 const arr1 = [1, 2, 3]
 const arr2 = [1, 2]
 arraise.merge(true, arr1, arr2) // [3]
-arraise.merge(false, arr1, arr2) // [1, 2, 3, 1, 2, 3]
+arraise.merge(false, arr1, arr2) // [1, 2, 3, 1, 2]
 ```
 
 ### max()
