@@ -103,8 +103,10 @@ arraise.makeUnique(array) // [1, 2, 3]
 
 Merge provided arrays. Supports merging **without** duplicated elements.
 ```js
-const array = [1, 1, 2, 3]
-arraise.makeUnique(array) // [1, 2, 3]
+const arr1 = [1, 2, 3]
+const arr2 = [1, 2]
+arraise.merge(true, arr1, arr2) // [3]
+arraise.merge(false, arr1, arr2) // [1, 2, 3, 1, 2, 3]
 ```
 
 ### max()
@@ -114,10 +116,8 @@ arraise.makeUnique(array) // [1, 2, 3]
 
 Finds maximum value in given array
 ```js
-const arr1 = [1, 2, 3]
-const arr2 = [1, 2]
-arraise.merge(true, arr1, arr2) // [3]
-arraise.merge(false, arr1, arr2) // [1, 2, 3, 1, 2, 3]
+const array = [1, 2, 3]
+arraise.max(array) // 3
 ```
 
 ### min()
@@ -128,7 +128,7 @@ arraise.merge(false, arr1, arr2) // [1, 2, 3, 1, 2, 3]
 Finds minimum value in given array
 ```js
 const array = [1, 2, 3]
-arraise.makeUnique(array) // 1
+arraise.min(array) // 1
 ```
 
 ### sortAscending()
