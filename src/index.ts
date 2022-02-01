@@ -21,18 +21,26 @@ interface ArraiseMethods<T> {
     makeUnique(array: T[]): T[];
 
     /**
+    * Finds maximum value in given array
+    * @param array - array to find maximum value
+    * @example [1, 2, 3] => 3
+    */
+    max(array: number[]): number;
+
+    /**
+    * Merge provided arrays
+    * @param unique - `true` - remove duplicated items, `false` - store duplicated items. Default - `false`
+    * @param args - arrays to merge
+    * @example [1, 2, 3], [1, 3] => [1, 2, 3, 1, 3]
+    */
+    merge(unique: boolean, ...args: T[][]): T[];
+
+    /**
      * Finds minimum value in given array
      * @param array - array to find minimum value
      * @example [1, 2, 3] => 1
      */
     min(array: number[]): number;
-
-    /**
-     * Finds maximum value in given array
-     * @param array - array to find maximum value
-     * @example [1, 2, 3] => 3
-     */
-    max(array: number[]): number;
 
     /**
      * Sorts array in ascending order: 
@@ -53,14 +61,14 @@ interface ArraiseMethods<T> {
      * @param args - arrays to find in
      * @example [1, 2, 3] && [1, 2] => [1, 2]
      */
-    findCommon(...args: T[]): T[]
+    findCommon(...args: T[][]): T[]
 
     /**
      * Finds different elements in provided arrays
      * @param args - arrays to find in
      * @example [1, 2, 3] && [1, 2] => [1, 2]
      */
-    findDifference(...args: T[]): T[]
+    findDifference(...args: T[][]): T[]
 
     /**
      * Swaps elements in given array. Provide indexes to swap.
@@ -74,14 +82,23 @@ interface ArraiseMethods<T> {
 
     //////////////////////////////// Objects //////////////////////////////////
     // TODO
-    findValuesByKey(obj: Object, key: string): any[]
+    findValuesByKey(obj: Object, key: string): T[]
 }
 
 export default class Arraise implements ArraiseMethods<any> {
-    constructor() {}
+    constructor() { }
 
     makeUnique(array: any[]): any[] {
         return [...new Set<any>(array)]
+    }
+
+    merge(unique: boolean = false, ...args: any[][]): any[] {
+        if (!args.length) throw new Error("Nothing to merge")
+
+        let result: any[] = [].concat(...args)
+        if (unique) result = [...new Set<any>(result)]
+
+        return result
     }
 
     min(array: number[]): number {
@@ -143,13 +160,13 @@ export default class Arraise implements ArraiseMethods<any> {
         }
     }
 
-    findCommon(...args: any[]): any[] {
+    findCommon(...args: any[][]): any[] {
         return args.reduce((first, second) => {
             return first.filter(el => second.includes(el));
         })
     }
 
-    findDifference(...args: any[]): any[] {
+    findDifference(...args: any[][]): any[] {
         return args.reduce((first, second) => {
             return first.filter(el => !second.includes(el));
         })

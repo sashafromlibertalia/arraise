@@ -32,6 +32,7 @@ Arraise is compatible with `arrays` and `objects`. Here is a list of available m
   - [findCommon()](#findcommon)
   - [findDifference()](#finddifference)
   - [makeUnique()](#makeunique)
+  - [merge()](#merge)
   - [max()](#max)
   - [min()](#min)
   - [sortAscending()](#sortascending)
@@ -94,6 +95,18 @@ const array = [1, 1, 2, 3]
 arraise.makeUnique(array) // [1, 2, 3]
 ```
 
+### merge()
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `unique<Boolean>` | true
+| `Array<T>`    | true | 
+
+Merge provided arrays. Supports merging **without** duplicated elements.
+```js
+const array = [1, 1, 2, 3]
+arraise.makeUnique(array) // [1, 2, 3]
+```
+
 ### max()
 | Arguments      | Required         |
 | :-------------: |:-------------:| 
@@ -101,8 +114,10 @@ arraise.makeUnique(array) // [1, 2, 3]
 
 Finds maximum value in given array
 ```js
-const array = [1, 2, 3]
-arraise.makeUnique(array) // 3
+const arr1 = [1, 2, 3]
+const arr2 = [1, 2]
+arraise.merge(true, arr1, arr2) // [3]
+arraise.merge(false, arr1, arr2) // [1, 2, 3, 1, 2, 3]
 ```
 
 ### min()
