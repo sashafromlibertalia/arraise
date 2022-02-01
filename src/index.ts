@@ -85,10 +85,12 @@ export default class Arraise implements ArraiseMethods<any> {
     }
 
     min(array: number[]): number {
+        if (!array.length) throw new Error("Can't find value in empty array")
         return array.sort().shift()
     }
 
     max(array: number[]): number {
+        if (!array.length) throw new Error("Can't find value in empty array")
         return array.sort().slice(-1).pop()
     }
 

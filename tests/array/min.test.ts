@@ -2,6 +2,11 @@ import Arraise from "../../src/index"
 const arraise = new Arraise()
 
 describe("test min method", () => {
+    test("find min element in empty array => throw error", () => {
+        const array = []
+        expect(() => arraise.min(array)).toThrowError()
+    })
+
     test("find min element in array", () => {
         const array = [1, 2, 3, 4, 5, 6, 7, 8]
         expect(arraise.min(array)).toBe(1)
