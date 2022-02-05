@@ -16,4 +16,9 @@ describe("test max method", () => {
         const array =  [-1, 6, 0, 7, 8]
         expect(arraise.max(array)).toBe(8)
     })
+
+    test("find max element in array #3", () => {
+        const array = ["1", "23", "4", "22"]
+        expect(arraise.max(array)).toBe("4")
+    })
 })

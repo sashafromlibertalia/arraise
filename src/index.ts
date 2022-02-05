@@ -25,7 +25,7 @@ interface ArraiseMethods<T> {
     * @param array - array to find maximum value
     * @example [1, 2, 3] => 3
     */
-    max(array: number[]): number;
+    max(array: number[] | string[]): number | string;
 
     /**
     * Merge provided arrays
@@ -40,7 +40,7 @@ interface ArraiseMethods<T> {
      * @param array - array to find minimum value
      * @example [1, 2, 3] => 1
      */
-    min(array: number[]): number;
+    min(array: number[] | string[]): number | string;
 
     /**
      * Sorts array in ascending order: 
@@ -79,10 +79,16 @@ interface ArraiseMethods<T> {
      */
     swap(arr: T[], first: number, last: number): T[]
 
+    /**
+     * Converts array to list of arrays
+     * @param array - input array
+     * @param level - amount of elements in subarrays. Only integer
+     * @example [1, 2, 3], level = 2 => [[1, 2], 3]
+     */
+    toArrayList(array: any[], level: number): any[][]
+
 
     //////////////////////////////// Objects //////////////////////////////////
-    // TODO
-    findValuesByKey(obj: Object, key: string): T[]
 }
 
 export default class Arraise implements ArraiseMethods<any> {
@@ -101,14 +107,18 @@ export default class Arraise implements ArraiseMethods<any> {
         return result
     }
 
-    min(array: number[]): number {
+    min(array: number[] | string[]): number | string {
         if (!array.length) throw new Error("Can't find value in empty array")
-        return array.sort().shift()
+        return array.sort((a: number | string, b: number | string) => {
+            return ('' + a.toString()).localeCompare(b.toString())
+        }).shift()
     }
 
-    max(array: number[]): number {
+    max(array: number[] | string[]): number | string {
         if (!array.length) throw new Error("Can't find value in empty array")
-        return array.sort().slice(-1).pop()
+        return array.sort((a: number | string, b: number | string) => {
+            return ('' + a.toString()).localeCompare(b.toString())
+        }).slice(-1).pop()
     }
 
     sortAscending(array: any[]): any[] {
@@ -172,10 +182,6 @@ export default class Arraise implements ArraiseMethods<any> {
         })
     }
 
-    findValuesByKey(obj: Object, key: string): any[] {
-        throw new Error("Method not implemented.")
-    }
-
     swap(arr: any[], first: number, last: number): any[] {
         if (!arr.length) throw new Error("Array is empty")
         if (first < 0 || last < 0) throw new Error("Indexes can't be negative numbers")
@@ -186,5 +192,17 @@ export default class Arraise implements ArraiseMethods<any> {
         arr[first] = temp
 
         return arr
+    }
+
+    toArrayList(array: any[], level: number): any[][] {
+        if (level < 0) throw new Error("Level can't be negative")
+        if (level % 10 < 1) throw new Error("Level can't be double")
+
+        let result = []
+        for (let i = 0; i < array.length; i += level) {
+            result.push(array.slice(i, i + level))
+        }
+
+        return result
     }
 }

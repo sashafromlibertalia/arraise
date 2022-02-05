@@ -38,6 +38,7 @@ Arraise is compatible with `arrays` and `objects`. Here is a list of available m
   - [sortAscending()](#sortascending)
   - [sortDescending()](#sortdescending)
   - [swap()](#swap)
+  - [toArrayList()](#toArrayList)
 - Objects
   - [аreSame()](#aresameobj)
 
@@ -164,6 +165,18 @@ Swaps elements in given array. Provide indexes to swap.
 ```js
 const array = [1, 5, 3]
 arraise.swap(array, 0, 1) // [5, 1, 5]
+```
+
+### toArrayList() <a name="toArrayList"></a>
+| Arguments      | Required         |
+| :-------------: |:-------------:| 
+| `Array<T>`    | true | 
+| `level<number>`    | true | 
+
+Converts array to list of arrays.
+```js
+const array = [1, 5, 3]
+arraise.toArrayList(array, 2) // [[1, 5], [3]]
 ```
 
 ## Objects

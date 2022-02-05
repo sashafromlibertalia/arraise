@@ -16,4 +16,14 @@ describe("test min method", () => {
         const array = [-1, 0, 6, 7, 8]
         expect(arraise.min(array)).toBe(-1)
     })
+
+    test("find min element in array #3", () => {
+        const array = ["1", "23", "4"]
+        expect(arraise.min(array)).toBe("1")
+    })
+
+    test("find min element in array #4", () => {
+        const array = [-10000, 100000, 621123, 333337, 0]
+        expect(arraise.min(array)).toBe(-10000)
+    })
 })
