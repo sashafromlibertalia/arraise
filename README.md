@@ -7,6 +7,8 @@
 <img src="https://coveralls.io/repos/github/sashafromlibertalia/arraise.js/badge.svg">
 <img src="https://img.shields.io/bundlephobia/min/arraise.js">
 <img src="https://img.shields.io/github/license/sashafromlibertalia/arraise.js">
+  
+<a href="https://www.buymeacoffee.com/fromlibertalia"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black"></a>
 </p>
 </div>
 
@@ -107,7 +109,7 @@ Merge provided arrays. Supports merging **without** duplicated elements.
 const arr1 = [1, 2, 3]
 const arr2 = [1, 2]
 arraise.merge(true, arr1, arr2) // [3]
-arraise.merge(false, arr1, arr2) // [1, 2, 3, 1, 2, 3]
+arraise.merge(false, arr1, arr2) // [1, 2, 3, 1, 2]
 ```
 
 ### max()
