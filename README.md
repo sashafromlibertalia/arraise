@@ -177,8 +177,8 @@ arraise.swap(array, 0, 1) // [5, 1, 5]
 
 Converts array to list of arrays.
 ```js
-const array = [1, 5, 3]
-arraise.toArrayList(array, 2) // [[1, 5], [3]]
+const array = [1, 2, 3, 4, 5]
+arraise.toArrayList(array, 2) // [[1, 2], [3, 4], [5]]
 ```
 
 ## Objects
