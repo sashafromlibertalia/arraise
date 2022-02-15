@@ -166,7 +166,7 @@ arraise.sortDescending(array) // [1, 3, 5]
 Swaps elements in given array. Provide indexes to swap.
 ```js
 const array = [1, 5, 3]
-arraise.swap(array, 0, 1) // [5, 1, 5]
+arraise.swap(array, 0, 1) // [5, 1, 3]
 ```
 
 ### toArrayList() <a name="toArrayList"></a>
